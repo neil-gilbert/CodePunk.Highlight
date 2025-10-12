@@ -13,13 +13,42 @@ A powerful and extensible syntax highlighting library built on top of [Spectre.C
 
 ## Supported Languages
 
+- **Bash** (.sh, .bash, .zsh)
+- **C** (.c, .h)
 - **C#** (.cs, .csx, .razor)
-- **JavaScript** (.js, .jsx, .mjs, .cjs)
-- **TypeScript** (.ts, .tsx, .cts, .mts)
-- **Python** (.py, .pyw)
-- **SQL** (.sql)
+- **Clojure** (.clj, .cljs, .cljc, .edn)
+- **CSS** (.css)
+- **Django/Jinja2** (.jinja, .jinja2, .djhtml)
+- **Dockerfile** (Dockerfile, .dockerfile)
+- **Elixir** (.ex, .exs)
+- **Erlang** (.erl, .hrl)
+- **F#** (.fs, .fsx, .fsi)
 - **Go** (.go)
+- **GraphQL** (.graphql, .gql)
+- **Handlebars** (.hbs, .handlebars)
+- **Haskell** (.hs)
+- **HTML** (.html, .htm)
+- **HTTP** (.http)
 - **Java** (.java)
+- **JavaScript** (.js, .jsx, .mjs, .cjs)
+- **JSON** (.json)
+- **Kotlin** (.kt, .kts)
+- **Makefile** (Makefile, .mk)
+- **Markdown** (.md, .markdown)
+- **Objective-C** (.m, .mm)
+- **Perl** (.pl, .pm)
+- **PHP** (.php)
+- **PowerShell** (.ps1, .psm1, .psd1)
+- **Python** (.py, .pyw)
+- **R** (.r)
+- **Ruby** (.rb)
+- **Rust** (.rs)
+- **SCSS** (.scss)
+- **SQL** (.sql)
+- **Swift** (.swift)
+- **TypeScript** (.ts, .tsx, .cts, .mts)
+- **XML** (.xml, .xaml)
+- **YAML** (.yaml, .yml)
 
 ## Installation
 
@@ -48,13 +77,42 @@ using Spectre.Console;
 // Set up the highlighter with supported languages
 var languages = new ILanguageDefinition[]
 {
+    new BashLanguageDefinition(),
+    new CLanguageDefinition(),
     new CSharpLanguageDefinition(),
-    new JavaScriptLanguageDefinition(),
-    new TypeScriptLanguageDefinition(),
-    new PythonLanguageDefinition(),
-    new SqlLanguageDefinition(),
+    new ClojureLanguageDefinition(),
+    new CssLanguageDefinition(),
+    new DjangoLanguageDefinition(),
+    new DockerfileLanguageDefinition(),
+    new ElixirLanguageDefinition(),
+    new ErlangLanguageDefinition(),
+    new FSharpLanguageDefinition(),
     new GoLanguageDefinition(),
-    new JavaLanguageDefinition()
+    new GraphQLLanguageDefinition(),
+    new HandlebarsLanguageDefinition(),
+    new HaskellLanguageDefinition(),
+    new HtmlLanguageDefinition(),
+    new HttpLanguageDefinition(),
+    new JavaLanguageDefinition(),
+    new JavaScriptLanguageDefinition(),
+    new JsonLanguageDefinition(),
+    new KotlinLanguageDefinition(),
+    new MakefileLanguageDefinition(),
+    new MarkdownLanguageDefinition(),
+    new ObjectiveCLanguageDefinition(),
+    new PerlLanguageDefinition(),
+    new PhpLanguageDefinition(),
+    new PowerShellLanguageDefinition(),
+    new PythonLanguageDefinition(),
+    new RLanguageDefinition(),
+    new RubyLanguageDefinition(),
+    new RustLanguageDefinition(),
+    new ScssLanguageDefinition(),
+    new SqlLanguageDefinition(),
+    new SwiftLanguageDefinition(),
+    new TypeScriptLanguageDefinition(),
+    new XmlLanguageDefinition(),
+    new YamlLanguageDefinition()
 };
 
 var highlighter = new SyntaxHighlighter(languages);
@@ -193,13 +251,42 @@ CodePunk.Highlight
 │   │   ├── ISyntaxHighlighter   - Main highlighter interface
 │   │   └── ITokenRenderer       - Token rendering interface
 │   ├── Languages
+│   │   ├── BashLanguageDefinition
+│   │   ├── CLanguageDefinition
 │   │   ├── CSharpLanguageDefinition
-│   │   ├── JavaScriptLanguageDefinition
-│   │   ├── TypeScriptLanguageDefinition
-│   │   ├── PythonLanguageDefinition
-│   │   ├── SqlLanguageDefinition
+│   │   ├── ClojureLanguageDefinition
+│   │   ├── CssLanguageDefinition
+│   │   ├── DjangoLanguageDefinition
+│   │   ├── DockerfileLanguageDefinition
+│   │   ├── ElixirLanguageDefinition
+│   │   ├── ErlangLanguageDefinition
+│   │   ├── FSharpLanguageDefinition
 │   │   ├── GoLanguageDefinition
-│   │   └── JavaLanguageDefinition
+│   │   ├── GraphQLLanguageDefinition
+│   │   ├── HandlebarsLanguageDefinition
+│   │   ├── HaskellLanguageDefinition
+│   │   ├── HtmlLanguageDefinition
+│   │   ├── HttpLanguageDefinition
+│   │   ├── JavaLanguageDefinition
+│   │   ├── JavaScriptLanguageDefinition
+│   │   ├── JsonLanguageDefinition
+│   │   ├── KotlinLanguageDefinition
+│   │   ├── MakefileLanguageDefinition
+│   │   ├── MarkdownLanguageDefinition
+│   │   ├── ObjectiveCLanguageDefinition
+│   │   ├── PerlLanguageDefinition
+│   │   ├── PhpLanguageDefinition
+│   │   ├── PowerShellLanguageDefinition
+│   │   ├── PythonLanguageDefinition
+│   │   ├── RLanguageDefinition
+│   │   ├── RubyLanguageDefinition
+│   │   ├── RustLanguageDefinition
+│   │   ├── ScssLanguageDefinition
+│   │   ├── SqlLanguageDefinition
+│   │   ├── SwiftLanguageDefinition
+│   │   ├── TypeScriptLanguageDefinition
+│   │   ├── XmlLanguageDefinition
+│   │   └── YamlLanguageDefinition
 │   └── Tokenization
 │       ├── Token               - Token data structure
 │       └── TokenType           - Token type enumeration
