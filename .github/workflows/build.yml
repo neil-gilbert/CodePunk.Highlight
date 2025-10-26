@@ -36,9 +36,12 @@ jobs:
         name: test-results
         path: '**/test-results.trx'
         
-    - name: Pack NuGet package
-      run: dotnet pack src/CodePunk.Highlight/CodePunk.Highlight.csproj --no-build --configuration Release --output ./artifacts
-      
+    - name: Pack CodePunk.Highlight.Core
+      run: dotnet pack src/CodePunk.Highlight.Core/CodePunk.Highlight.Core.csproj --no-build --configuration Release --output ./artifacts
+
+    - name: Pack CodePunk.Highlight (Spectre)
+      run: dotnet pack src/CodePunk.Highlight.Spectre/CodePunk.Highlight.Spectre.csproj --no-build --configuration Release --output ./artifacts
+
     - name: Upload NuGet package artifact
       uses: actions/upload-artifact@v4
       with:

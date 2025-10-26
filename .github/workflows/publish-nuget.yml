@@ -45,9 +45,12 @@ jobs:
         echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
         echo "Publishing version: $VERSION"
         
-    - name: Pack NuGet package
-      run: dotnet pack src/CodePunk.Highlight/CodePunk.Highlight.csproj --no-build --configuration Release --output ./artifacts -p:PackageVersion=${{ steps.version.outputs.VERSION }}
-      
+    - name: Pack CodePunk.Highlight.Core
+      run: dotnet pack src/CodePunk.Highlight.Core/CodePunk.Highlight.Core.csproj --no-build --configuration Release --output ./artifacts -p:PackageVersion=${{ steps.version.outputs.VERSION }}
+
+    - name: Pack CodePunk.Highlight (Spectre)
+      run: dotnet pack src/CodePunk.Highlight.Spectre/CodePunk.Highlight.Spectre.csproj --no-build --configuration Release --output ./artifacts -p:PackageVersion=${{ steps.version.outputs.VERSION }}
+
     - name: Push to NuGet.org
       run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
       

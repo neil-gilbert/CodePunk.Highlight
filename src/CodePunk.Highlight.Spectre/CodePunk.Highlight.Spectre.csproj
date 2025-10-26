@@ -8,11 +8,11 @@
     <RootNamespace>CodePunk.Highlight.Spectre</RootNamespace>
 
     <!-- NuGet Package Properties -->
-    <PackageId>CodePunk.Highlight.Spectre</PackageId>
-    <Version>2.0.0</Version>
+    <PackageId>CodePunk.Highlight</PackageId>
+    <Version>2.0.1</Version>
     <Authors>CodePunk</Authors>
     <Company>CodePunk</Company>
-    <Description>Spectre.Console rendering for CodePunk.Highlight. A powerful and extensible syntax highlighting library designed for beautiful terminal output with rich color support for 40+ programming languages.</Description>
+    <Description>A powerful and extensible syntax highlighting library designed for beautiful terminal output with Spectre.Console. Features rich color support for 40+ programming languages. This package now depends on CodePunk.Highlight.Core for the core tokenization engine.</Description>
     <PackageTags>syntax;highlighting;spectre;console;terminal;colors;csharp;javascript;python;code</PackageTags>
     <PackageProjectUrl>https://github.com/neil-gilbert/CodePunk.Highlight</PackageProjectUrl>
     <RepositoryUrl>https://github.com/neil-gilbert/CodePunk.Highlight.git</RepositoryUrl>

@@ -9,7 +9,7 @@
 
     <!-- NuGet Package Properties -->
     <PackageId>CodePunk.Highlight.Core</PackageId>
-    <Version>2.0.0</Version>
+    <Version>2.0.1</Version>
     <Authors>CodePunk</Authors>
     <Company>CodePunk</Company>
     <Description>Core syntax highlighting and tokenization library with support for 40+ programming languages. Platform-agnostic engine for building custom syntax highlighters.</Description>
