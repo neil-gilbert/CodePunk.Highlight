@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>CodePunk.Highlight.Spectre</AssemblyName>
+    <RootNamespace>CodePunk.Highlight.Spectre</RootNamespace>
+
+    <!-- NuGet Package Properties -->
+    <PackageId>CodePunk.Highlight.Spectre</PackageId>
+    <Version>2.0.0</Version>
+    <Authors>CodePunk</Authors>
+    <Company>CodePunk</Company>
+    <Description>Spectre.Console rendering for CodePunk.Highlight. A powerful and extensible syntax highlighting library designed for beautiful terminal output with rich color support for 40+ programming languages.</Description>
+    <PackageTags>syntax;highlighting;spectre;console;terminal;colors;csharp;javascript;python;code</PackageTags>
+    <PackageProjectUrl>https://github.com/neil-gilbert/CodePunk.Highlight</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/neil-gilbert/CodePunk.Highlight.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../CodePunk.Highlight.Core/CodePunk.Highlight.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.49.1" />
+  </ItemGroup>
+
+</Project>

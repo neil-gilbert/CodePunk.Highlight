@@ -1,6 +1,11 @@
 # CodePunk.Highlight
 
-A powerful and extensible syntax highlighting library built on top of [Spectre.Console](https://spectreconsole.net/), designed for beautiful terminal output with rich color support.
+A powerful and extensible syntax highlighting library with a platform-agnostic core and beautiful terminal output via [Spectre.Console](https://spectreconsole.net/).
+
+## Packages
+
+- **CodePunk.Highlight.Core** - Core tokenization and language detection engine (no UI dependencies)
+- **CodePunk.Highlight.Spectre** - Spectre.Console rendering for terminal output
 
 ## Features
 
@@ -52,16 +57,26 @@ A powerful and extensible syntax highlighting library built on top of [Spectre.C
 
 ## Installation
 
+### For Spectre.Console Terminal Output
+
 Install via NuGet:
 
 ```bash
-dotnet add package CodePunk.Highlight
+dotnet add package CodePunk.Highlight.Spectre
 ```
 
 Or via Package Manager Console:
 
 ```powershell
-Install-Package CodePunk.Highlight
+Install-Package CodePunk.Highlight.Spectre
+```
+
+### For Custom Renderers (Core Only)
+
+If you want to implement your own renderer (HTML, Markdown, etc.), install just the core:
+
+```bash
+dotnet add package CodePunk.Highlight.Core
 ```
 
 ## Quick Start
@@ -69,9 +84,9 @@ Install-Package CodePunk.Highlight
 ### Basic Usage
 
 ```csharp
-using CodePunk.Highlight.SyntaxHighlighting;
+using CodePunk.Highlight.Core.SyntaxHighlighting;
 using CodePunk.Highlight.SyntaxHighlighting.Languages;
-using CodePunk.Highlight.Rendering;
+using CodePunk.Highlight.Spectre.Rendering;
 using Spectre.Console;
 
 // Set up the highlighter with supported languages
@@ -135,7 +150,7 @@ highlighter.Highlight(code, "csharp", renderer);
 ### Language Detection from File Path
 
 ```csharp
-using CodePunk.Highlight.SyntaxHighlighting;
+using CodePunk.Highlight.Core.SyntaxHighlighting;
 
 // Automatically detect language from file extension
 string filePath = "MyClass.cs";
@@ -154,7 +169,7 @@ If you want to generate Spectre markup strings instead of directly writing to th
 
 ```csharp
 using System.Text;
-using CodePunk.Highlight.Rendering;
+using CodePunk.Highlight.Spectre.Rendering;
 
 var builder = new StringBuilder();
 var renderer = new MarkupTokenRenderer(builder);
@@ -172,8 +187,8 @@ AnsiConsole.MarkupLine(markup);
 Implement your own renderer by implementing the `ITokenRenderer` interface:
 
 ```csharp
-using CodePunk.Highlight.SyntaxHighlighting.Abstractions;
-using CodePunk.Highlight.SyntaxHighlighting.Tokenization;
+using CodePunk.Highlight.Core.SyntaxHighlighting.Abstractions;
+using CodePunk.Highlight.Core.SyntaxHighlighting.Tokenization;
 
 public class CustomRenderer : ITokenRenderer
 {
@@ -241,60 +256,48 @@ The default color palette:
 
 ## Architecture
 
+The library is split into two packages following the ColorCode-Universal pattern:
+
+### CodePunk.Highlight.Core
+
+Platform-agnostic tokenization engine with no UI dependencies:
+
 ```
-CodePunk.Highlight
-├── SyntaxHighlighting
-│   ├── SyntaxHighlighter        - Main highlighter orchestrator
-│   ├── LanguageDetector         - File extension to language mapping
-│   ├── Abstractions
-│   │   ├── ILanguageDefinition  - Language tokenizer interface
-│   │   ├── ISyntaxHighlighter   - Main highlighter interface
-│   │   └── ITokenRenderer       - Token rendering interface
-│   ├── Languages
-│   │   ├── BashLanguageDefinition
-│   │   ├── CLanguageDefinition
-│   │   ├── CSharpLanguageDefinition
-│   │   ├── ClojureLanguageDefinition
-│   │   ├── CssLanguageDefinition
-│   │   ├── DjangoLanguageDefinition
-│   │   ├── DockerfileLanguageDefinition
-│   │   ├── ElixirLanguageDefinition
-│   │   ├── ErlangLanguageDefinition
-│   │   ├── FSharpLanguageDefinition
-│   │   ├── GoLanguageDefinition
-│   │   ├── GraphQLLanguageDefinition
-│   │   ├── HandlebarsLanguageDefinition
-│   │   ├── HaskellLanguageDefinition
-│   │   ├── HtmlLanguageDefinition
-│   │   ├── HttpLanguageDefinition
-│   │   ├── JavaLanguageDefinition
-│   │   ├── JavaScriptLanguageDefinition
-│   │   ├── JsonLanguageDefinition
-│   │   ├── KotlinLanguageDefinition
-│   │   ├── MakefileLanguageDefinition
-│   │   ├── MarkdownLanguageDefinition
-│   │   ├── ObjectiveCLanguageDefinition
-│   │   ├── PerlLanguageDefinition
-│   │   ├── PhpLanguageDefinition
-│   │   ├── PowerShellLanguageDefinition
-│   │   ├── PythonLanguageDefinition
-│   │   ├── RLanguageDefinition
-│   │   ├── RubyLanguageDefinition
-│   │   ├── RustLanguageDefinition
-│   │   ├── ScssLanguageDefinition
-│   │   ├── SqlLanguageDefinition
-│   │   ├── SwiftLanguageDefinition
-│   │   ├── TypeScriptLanguageDefinition
-│   │   ├── XmlLanguageDefinition
-│   │   └── YamlLanguageDefinition
-│   └── Tokenization
-│       ├── Token               - Token data structure
-│       └── TokenType           - Token type enumeration
+CodePunk.Highlight.Core
+└── SyntaxHighlighting
+    ├── SyntaxHighlighter        - Main highlighter orchestrator
+    ├── LanguageDetector         - File extension to language mapping
+    ├── Abstractions
+    │   ├── ILanguageDefinition  - Language tokenizer interface
+    │   ├── ISyntaxHighlighter   - Main highlighter interface
+    │   └── ITokenRenderer       - Token rendering interface
+    ├── Languages
+    │   ├── BashLanguageDefinition
+    │   ├── CLanguageDefinition
+    │   ├── CSharpLanguageDefinition
+    │   ├── ... (40+ language definitions)
+    │   └── YamlLanguageDefinition
+    └── Tokenization
+        ├── Token               - Token data structure
+        └── TokenType           - Token type enumeration
+```
+
+### CodePunk.Highlight.Spectre
+
+Spectre.Console rendering implementation:
+
+```
+CodePunk.Highlight.Spectre
 └── Rendering
     ├── SpectreTokenRenderer    - Direct console output
     ├── MarkupTokenRenderer     - Generate markup strings
     └── TokenColorPalette       - Default color scheme
 ```
+
+This separation allows:
+- Use of the core engine for HTML, Markdown, or any custom renderer
+- Smaller dependency footprint when UI framework is not needed
+- Easy addition of new renderers (e.g., CodePunk.Highlight.Html)
 
 ## Contributing
 
@@ -308,16 +311,17 @@ Contributions are welcome! To add support for a new language:
 ## Requirements
 
 - .NET 9.0 or higher
-- Spectre.Console 0.49.1 or higher
+- CodePunk.Highlight.Core - No dependencies
+- CodePunk.Highlight.Spectre - Requires Spectre.Console 0.49.1 or higher
 
 ## Examples
 
 ### Complete Console Application
 
 ```csharp
-using CodePunk.Highlight.SyntaxHighlighting;
+using CodePunk.Highlight.Core.SyntaxHighlighting;
 using CodePunk.Highlight.SyntaxHighlighting.Languages;
-using CodePunk.Highlight.Rendering;
+using CodePunk.Highlight.Spectre.Rendering;
 using Spectre.Console;
 
 var languages = new ILanguageDefinition[]

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>CodePunk.Highlight.Core</AssemblyName>
+    <RootNamespace>CodePunk.Highlight.Core</RootNamespace>
+
+    <!-- NuGet Package Properties -->
+    <PackageId>CodePunk.Highlight.Core</PackageId>
+    <Version>2.0.0</Version>
+    <Authors>CodePunk</Authors>
+    <Company>CodePunk</Company>
+    <Description>Core syntax highlighting and tokenization library with support for 40+ programming languages. Platform-agnostic engine for building custom syntax highlighters.</Description>
+    <PackageTags>syntax;highlighting;tokenization;parser;lexer;csharp;javascript;python;code;core</PackageTags>
+    <PackageProjectUrl>https://github.com/neil-gilbert/CodePunk.Highlight</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/neil-gilbert/CodePunk.Highlight.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+</Project>

@@ -1,5 +1,5 @@
-using CodePunk.Highlight.SyntaxHighlighting.Languages;
-using CodePunk.Highlight.SyntaxHighlighting.Tokenization;
+using CodePunk.Highlight.Core.SyntaxHighlighting.Languages;
+using CodePunk.Highlight.Core.SyntaxHighlighting.Tokenization;
 using Xunit;
 
 namespace CodePunk.Highlight.Tests.SyntaxHighlighting;

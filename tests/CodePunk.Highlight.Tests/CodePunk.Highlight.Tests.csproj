@@ -25,7 +25,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/CodePunk.Highlight/CodePunk.Highlight.csproj" />
+    <ProjectReference Include="../../src/CodePunk.Highlight.Core/CodePunk.Highlight.Core.csproj" />
+    <ProjectReference Include="../../src/CodePunk.Highlight.Spectre/CodePunk.Highlight.Spectre.csproj" />
   </ItemGroup>
 
 </Project>
