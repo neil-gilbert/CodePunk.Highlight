@@ -62,13 +62,13 @@ A powerful and extensible syntax highlighting library with a platform-agnostic c
 Install via NuGet:
 
 ```bash
-dotnet add package CodePunk.Highlight.Spectre
+dotnet add package CodePunk.Highlight
 ```
 
 Or via Package Manager Console:
 
 ```powershell
-Install-Package CodePunk.Highlight.Spectre
+Install-Package CodePunk.Highlight
 ```
 
 ### For Custom Renderers (Core Only)
