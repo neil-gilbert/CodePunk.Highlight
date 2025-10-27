@@ -1,0 +1,26 @@
+@using CodePunk.Highlight.RazorConsole.Components
+
+@*
+    Note: This component is designed to work with RazorConsole's Panel component.
+    Users should wrap this in their own Panel component from RazorConsole if they have one.
+    Example:
+    <Panel Title="Code" BorderColor="@Color.Blue">
+        <CodeBlock Code="@code" Language="csharp" />
+    </Panel>
+*@
+
+<CodeBlock Code="@Code" Language="@Language" />
+
+@code {
+    /// <summary>
+    /// Gets or sets the source code to highlight.
+    /// </summary>
+    [Parameter, EditorRequired]
+    public string Code { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the language identifier (e.g., "csharp", "python", "javascript").
+    /// </summary>
+    [Parameter, EditorRequired]
+    public string Language { get; set; } = "csharp";
+}
