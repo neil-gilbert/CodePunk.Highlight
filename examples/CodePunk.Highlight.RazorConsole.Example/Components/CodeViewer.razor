@@ -1,0 +1,48 @@
+@*
+    Example RazorConsole Component demonstrating CodePunk.Highlight usage
+
+    This component shows how to use the CodeBlock component to display
+    syntax-highlighted code in a RazorConsole application.
+*@
+
+@using CodePunk.Highlight.RazorConsole.Components
+
+@*
+    When RazorConsole is available, you would typically wrap CodeBlock in a Panel:
+    <Panel Title="C# Code Example" BorderColor="@Color.Green">
+        <CodeBlock Code="@csharpCode" Language="csharp" />
+    </Panel>
+*@
+
+<h1>Code Highlighting Examples</h1>
+
+<h2>C# Example</h2>
+<CodeBlock Code="@csharpCode" Language="csharp" />
+
+<h2>Python Example</h2>
+<CodeBlock Code="@pythonCode" Language="python" />
+
+<h2>JavaScript Example</h2>
+<CodeBlock Code="@javascriptCode" Language="javascript" />
+
+@code {
+    private string csharpCode = @"public class Program
+{
+    static void Main()
+    {
+        Console.WriteLine(""Hello, World!"");
+    }
+}";
+
+    private string pythonCode = @"def hello():
+    print('Hello, World!')
+
+if __name__ == '__main__':
+    hello()";
+
+    private string javascriptCode = @"const hello = () => {
+    console.log('Hello, World!');
+};
+
+hello();";
+}

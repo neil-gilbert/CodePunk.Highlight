@@ -1,0 +1,40 @@
+@using CodePunk.Highlight.Core.SyntaxHighlighting.Abstractions
+@using CodePunk.Highlight.RazorConsole.Rendering
+@inject ISyntaxHighlighter Highlighter
+
+@if (!string.IsNullOrEmpty(RenderedMarkup))
+{
+    @((MarkupString)RenderedMarkup)
+}
+
+@code {
+    /// <summary>
+    /// Gets or sets the source code to highlight.
+    /// </summary>
+    [Parameter, EditorRequired]
+    public string Code { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the language identifier (e.g., "csharp", "python", "javascript").
+    /// </summary>
+    [Parameter, EditorRequired]
+    public string Language { get; set; } = "csharp";
+
+    private string RenderedMarkup { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Called when component parameters are set or changed.
+    /// </summary>
+    protected override void OnParametersSet()
+    {
+        if (string.IsNullOrEmpty(Code))
+        {
+            RenderedMarkup = string.Empty;
+            return;
+        }
+
+        var renderer = new RazorConsoleTokenRenderer();
+        Highlighter.Highlight(Code, Language, renderer);
+        RenderedMarkup = renderer.GetMarkup();
+    }
+}
