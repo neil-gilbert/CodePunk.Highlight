@@ -1,7 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>net10.0;net9.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>CodePunk.Highlight.Core</AssemblyName>
@@ -9,7 +9,7 @@
 
     <!-- NuGet Package Properties -->
     <PackageId>CodePunk.Highlight.Core</PackageId>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <Authors>CodePunk</Authors>
     <Company>CodePunk</Company>
     <Description>Core syntax highlighting and tokenization library with support for 40+ programming languages. Platform-agnostic engine for building custom syntax highlighters.</Description>

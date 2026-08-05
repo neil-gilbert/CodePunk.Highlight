@@ -9,14 +9,17 @@ namespace CodePunk.Highlight.Core.SyntaxHighlighting.Languages;
 /// </summary>
 public class CSharpLanguageDefinition : ILanguageDefinition
 {
+    /// <inheritdoc />
     public string Name => "csharp";
+
+    /// <inheritdoc />
     public string[] Aliases => new[] { "cs", "c#", "dotnet" };
 
     private static readonly HashSet<string> Keywords = new(StringComparer.Ordinal)
     {
         "abstract", "as", "base", "break", "case", "catch",
         "checked", "class", "const", "continue", "default", "delegate",
-        "do", "else", "enum", "event", "explicit", "extern", "false",
+        "do", "else", "enum", "event", "explicit", "extern", "false", "field",
         "finally", "fixed", "for", "foreach", "goto", "if", "implicit",
         "in", "interface", "internal", "is", "lock", "namespace",
         "new", "null", "operator", "out", "override", "params", "private",
@@ -36,6 +39,7 @@ public class CSharpLanguageDefinition : ILanguageDefinition
         "nint", "nuint"
     };
 
+    /// <inheritdoc />
     public bool Matches(string languageId)
     {
         if (string.IsNullOrWhiteSpace(languageId)) return false;
@@ -43,6 +47,7 @@ public class CSharpLanguageDefinition : ILanguageDefinition
         return normalized == Name || Aliases.Contains(normalized);
     }
 
+    /// <inheritdoc />
     public IEnumerable<Token> Tokenize(ReadOnlySpan<char> source)
     {
         var tokens = new List<Token>();
